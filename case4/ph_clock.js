@@ -11,10 +11,27 @@
 
 */
 
+var clockID = setInterval("countdown()", 1000);
 
+var minsLeft = 30;
+var secsLeft = 0;
+var timeLeft = minsLeft * 60 + secsLeft;
 
+function countdown(){
+   minsLeft = Math.floor(timeLeft/60);
+   secsLeft = timeLeft - 60 * minsLeft;
+   var minsString = addLeadingZero(minsLeft);
+   var secsString = addLeadingZero(secsLeft);
+   document.getElementById("minutes").innerHTML = minsString ;
+   document.getElementById("seconds").innerHTML = secsString ;
+   checkTimer();
+   timeLeft--;
+}
+function stopClock(){
+   document.getElementById("TimeHead").insertAdjacentHTML('beforeEnd', "<br />");
+   clockID = clearInterval(clockID);
 
-
+}
 
 /* ------------------------------------------------- */
 
